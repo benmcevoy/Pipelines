@@ -1,0 +1,37 @@
+<h2>Web Transforms for external files</h2>
+
+<p>So often it's easy to come up with the complex solution and hard to do the simplest thing. And sometimes it's a case of just not seeing the wood for the trees.</p>
+
+<p>When working with systems like Sitecore or Umbraco you find <em>a lot</em> of external config files. Sitecore has it's <em>patch</em>ing (a kind of custom transform engine) and there's always web transforms, but what to do about environmental differences in all those external files?</p>
+
+<h3>The complex way</h3>
+
+<p>All we wanted was to be able to "add transform" to any old config file.  So we reach for solutions like <a href="http://www.hanselman.com/blog/SlowCheetahWebconfigTransformationSyntaxNowGeneralizedForAnyXMLConfigurationFile.aspx">SlowCheetah</a> or msbuild scripts using Web Transform Task and others.</p>
+
+<p>It works and seems easy enough (expecially SlowCheetah).</p>
+
+<p>But now any one coming to the project has friction and has to install a Visual Studio extension, or god forbid, edit an msbuild script.</p>
+
+<h3>The simple way</h3>
+
+<p>Rather than trying to transform the external config file, we just need to <a href="http://stackoverflow.com/a/14842051"><em>transform the path</em></a> to the file.</p>
+
+<p>Like a light bulb. So simple. So obvious.  Took so long to recognise it.</p>
+
+<p>Just a bunch of config files with each environment in the name.</p>
+
+<p>Add a web transform and use the Condition locator.  Say <strong>Web.Staging.config</strong>:</p>
+
+<pre><code>
+    &lt;myModule configsource="config/myModule.<strong>STAGING</strong>.config" 
+          xdt:Locator="Condition(@configSource='config/myModule.config')" 
+          xdt:Transfrom="Replace" /&gt;
+</code></pre>
+
+<p>Sure, you don't get nicely nested files in the solution explorer, and it's not completely DRY. But it's simple. And easy. And it works.  </p>
+
+<h3>But</h3>
+
+<p>You will end up deploying multiple config files, e.g. myModule.config, mymodule.staging.config etc. and that might be an issue if there are sensitive settings in there, like connection strings or passwords. </p>
+
+<p>Cheers.</p>

@@ -1,0 +1,106 @@
+<p>I have been abusing the strategy pattern of late, and ended up writing a StrategyResolver class.</p>
+
+<p>This sort of thing is probably best left to a DI container, using a factory to resolve. But anyways...</p>
+
+<p>We can inject a StrategyResolver<TStrategy> for our strategy implementations, and then Resolve the correct strategy based on a key.</p>
+
+<p>This lets use resolve the strategy through data.  For example, I've been doing a bit web scraping and manipulation, so using this technique I can resolve a strategy based on the domain of the page I am processing.</p>
+
+<p>I guess I'm really just injecting a factory. Sort of.</p>
+
+<pre><code>
+    // create a resolver (or inject one)
+    StrategyResolver _strategyResolver = new StrategyResolver<IMyStrategyInterface>();
+
+    // use it to retrieve an implementation based on some key
+    _myStrategy = _strategyResolver.Resolve(url.Host);
+
+    // create and decorate your strategy implementation
+    [StrategyFor("news.ycombinator.com")]
+    public class HackerNewsStrategy : IMyStrategyInterface
+
+</code></pre>
+
+<p>The resolver scans the calling assembly for implementations of TStrategy.  When any are found they are stashed away in a dictionary.</p>
+
+<p>Later we can retrieve them by the key.  If nothing is found then we will return the default(TStrategy), which is probably going to be null.</p>
+
+<p>Whether this is a good implementation or idea or not, I am finding it quite nice to be able to just add a new class implementing my IStrategy, decorate it and... that's it. Done.</p>
+
+<p>The resolver class:</p>
+
+<pre><code>
+    public class StrategyResolver&lt;TStrategy&gt; 
+    {
+        private static Dictionary&lt;string, TStrategy&gt; _strategies;
+
+        public TStrategy Resolve(string key)
+        {
+            var assembly = Assembly.GetCallingAssembly();
+
+            return ResolveImpl(key, assembly);
+        }
+
+        public TStrategy Resolve(string key, TStrategy defaultStrategy)
+        {
+            var assembly = Assembly.GetCallingAssembly();
+
+            return ResolveImpl(key, assembly, defaultStrategy);
+        }
+
+        private static TStrategy ResolveImpl(string key, Assembly callingAssembly, TStrategy defaultStrategy = default(TStrategy))
+        {
+            if (_strategies == null) Load(callingAssembly);
+
+            var lowerKey = key.ToLowerInvariant();
+
+            if (_strategies != null && _strategies.ContainsKey(lowerKey))
+            {
+                return _strategies[lowerKey];
+            }
+
+            return defaultStrategy;
+        }
+
+        private static void Load(Assembly assembly)
+        {
+            _strategies = new Dictionary&lt;string, TStrategy&gt;();
+
+            var strategyType = typeof(TStrategy);
+            var types = assembly
+                .GetTypes()
+                .Where(t =&gt; strategyType.IsAssignableFrom(t) && t.IsClass)
+                .ToList();
+
+            foreach (var type in types)
+            {
+                var strategyFor = type.GetCustomAttributes(typeof(StrategyForAttribute), false).FirstOrDefault();
+
+                if (strategyFor == null) continue;
+
+                var strategyForAttribute = strategyFor as StrategyForAttribute;
+
+                if (strategyForAttribute == null) continue;
+
+                _strategies[strategyForAttribute.Key] = (TStrategy)Activator.CreateInstance(type);
+            }
+        }
+    }
+
+</code></pre>
+
+<p>Each strategy implementation is decorated with the [StrategyFor] attribute.</p>
+
+<pre><code>
+    [AttributeUsage(AttributeTargets.Class)]
+    public class StrategyForAttribute : Attribute
+    {
+        public StrategyForAttribute(string key)
+        {
+            Key = key;
+        }
+
+        public string Key { get; private set; }
+    }
+
+</code></pre>

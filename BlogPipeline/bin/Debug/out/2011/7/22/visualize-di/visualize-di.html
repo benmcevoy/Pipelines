@@ -1,0 +1,60 @@
+<p><a href="http://www.ndepend.com/">NDepend</a>.  That’s the answer.</p>
+
+<p>However, the question was, how can I visualize dependancies in a .NET assembly? And as it turns, quite easily indeed.</p>
+
+<p>First of all, this is what I am talking about.  Here is a graph showing constructor injection (you know, IoC, DI, etc.) <a href="https://bitbucket.org/benmcevoy/mp3grabber">in an application</a> I wrote a while back that downloads MP3 from RSS/ATOM feeds.</p>
+
+<p><a href="http://benmcevoy.co.nz/blog/get/media_injection_isom.png"><img src="http://benmcevoy.co.nz/blog/get/media_injection.JPG" alt="alt text" title="The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example" /></a></p>
+
+<p><em>The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example.</em></p>
+
+<p>When you use a tool like Castle, or Unity, or Structure map, etc, you will become familiar with the term “<a href="https://secure.wikimedia.org/wikipedia/en/wiki/Dependency_graph">dependency graph</a>” – this is literally a visualization of such a graph.</p>
+
+<p>We can also visualize class inheritance and interface implementations:</p>
+
+<p><a href="http://benmcevoy.co.nz/blog/get/media_inherit_isom.png"><img src="http://benmcevoy.co.nz/blog/get/media_inherit.jpg" alt="alt text" title="MainView is a WPF window by the look of it, and inherits a lot of stuff because of it" /></a></p>
+
+<p><em>MainView is a WPF window by the look of it, and inherits a lot of stuff because of it.</em></p>
+
+<p>Or assembly references:
+<img src="http://benmcevoy.co.nz/blog/get/media_assembly.JPG" alt="alt text" title="The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components" /></p>
+
+<p><em>The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components.</em></p>
+
+<p>And if I ever get around to it, you could also visualize namespace references as well...</p>
+
+<p>In essence all I am doing is some simple reflection over an assembly, and graphing relationships between types and/or assemblies.</p>
+
+<pre><code>
+        private void ShowConstructorInjection(Assembly rootAssembly)
+        {
+            AddAllParentTypes(rootAssembly);
+
+            foreach (var type in rootAssembly.GetTypes())
+            {
+                // inspect constructors
+                foreach (var constructor in type.GetConstructors())
+                {
+                    // here we look at constructor injection
+                    // to determine a "dependency"
+                    foreach (var param in constructor.GetParameters())
+                    {
+                        try
+                        {
+                            AddVertex(param.ParameterType.FullName);
+                            GraphToVisualize.AddEdge(new Edge&lt;object&gt;(param.ParameterType.FullName, type.FullName));
+                        }
+                        catch { }
+                    }
+                }
+            }
+        }
+</code></pre>
+
+<p>The graphing and visualization is handled by the most excellent <a href="http://quickgraph.codeplex.com/">QuickGraph</a> and <a href="http://graphsharp.codeplex.com/">Graph#</a> respectively.</p>
+
+<p>You can grab the <a href="https://bitbucket.org/benmcevoy/dependancy-graph">source code here</a> and have a play.  I can tell you now, it’s pretty brittle and will crash a lot :)</p>
+
+<p>For comparison, this is a small part of DotNetNuke6, constructor injection (that's System.Object in the center, btw...):</p>
+
+<p><a href="http://benmcevoy.co.nz/blog/get/dnn6_injection_isom.png"><img src="http://benmcevoy.com.au/blog/get/dnn6_injection.JPG" alt="alt text" title="The pain that is DNN" /></a></p>

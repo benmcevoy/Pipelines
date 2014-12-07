@@ -1,0 +1,1 @@
+{"published":"2011-07-16T05:00:00","summary":"Replace(\" And \", \" and \") .Replace(\" Of \", \" of \") .Replace(\" In \", \" in \") .Replace(\" The \", \" the \") .Replace(\" Is \", \" is \") .Replace(\" For \", \" for \") .Clean(); ","keywords":", public, renamer, }, {, .replace(, =, return","slug":"fluent-file-renamer","title":"Fluent File Renaming API"}

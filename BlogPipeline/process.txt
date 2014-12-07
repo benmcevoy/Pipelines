@@ -1,0 +1,19 @@
+﻿
+firstly a pipeline to extract all the crap out of sql
+
+define a post object
+
+
+	GetPosts
+	CreateProcessorPipeline
+	RunPipeline	
+		new pipeline processposts
+
+			EnsureFolder
+			WriteMarkdown
+			WriteMeta
+			
+pipelinline to convert posts to static site
+
+
+	

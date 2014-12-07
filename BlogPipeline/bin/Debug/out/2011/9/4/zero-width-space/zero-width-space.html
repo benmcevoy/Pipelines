@@ -1,0 +1,33 @@
+<p>Although it sounds like a plot device from StarGate it’s actually a means of indicating a word boundary in <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Zero-width_space">computerised typesetting</a>.</p>
+
+<p>It's also a neat way of causing me to tear my hair out and swear a lot. I mean a lot.</p>
+
+<p>I recently was building some nested master pages in ASP.NET.  Somehow I had managed to get one of these magical little characters into my source.  I’m not sure how as all I had was the most simple of pages.</p>
+
+<p>It looked like this:    </p>
+
+<pre><code>
+    &lt;%@ Master Language="C#" MasterPageFile="~/Site.Master" 
+        AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" 
+        Inherits="WebApplication1.NestedMasterPage1" %&gt;
+
+    &lt;asp:Content ContentPlaceHolderID="MainContent" runat="server"&gt;
+        spot the typo
+    &lt;/asp:Content&gt;
+</code></pre>
+
+<p>You can immediately see the problem, right?</p>
+
+<p>Run the app and get a beautiful YSOD:</p>
+
+<p><img src="http://benmcevoy.com.au/blog/get/zero-width/utf-error.JPG" alt="Alt text" title="invisible characters are hard to spot" /></p>
+
+<p>15 minutes later and I am near to tears.  But then… Open the file in a binary editor.</p>
+
+<p><img src="http://benmcevoy.com.au/blog/get/zero-width/utf-error-source.JPG" alt="Alt text" title="an innocuous looking trio" /></p>
+
+<p><strong>OD OA</strong> are the usual /r/n characters.  The <strong>E2 80 8B</strong> at the end is the culprit.  Delete these and all is well.  </p>
+
+<p>Where did they come from? I don't know. Where did they go? To <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Silicon_Heaven">silicon heaven</a>.</p>
+
+<p>What's worse is I have seen this bug, or one very like it, many years ago.  The guy sitting next to me had similar issues (he swore a lot), and eventually he wrote a small app to inspect the hex values of the source (it was back in Visual InterDev days, not sure if there was a binary editor built in back then, but anyways).</p>
