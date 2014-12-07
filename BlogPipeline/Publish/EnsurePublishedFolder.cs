@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using Pipes;
 
 namespace BlogPipeline.Publish
@@ -8,7 +8,16 @@ namespace BlogPipeline.Publish
     {
         public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
-            throw new NotImplementedException();
+            var post = (PostToProcess)context["currentpost"];
+
+            var path = Path.Combine("published", post.RelativePath);
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            };
+
+            return context;
         }
     }
 }

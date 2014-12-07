@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
 using Pipes;
 
 namespace BlogPipeline.Publish
@@ -16,16 +13,23 @@ namespace BlogPipeline.Publish
             postProcessor.Create(new IFilter[]
             {
                 new CreatePostContextFilter(), 
+                new EnsurePublishedFolder(), 
                 new CreatePostPage(),
-
             });
 
+            foreach (var fileToProcess in GetFilesToProcess("out"))
+            {
+                context["currentpath"] = fileToProcess;
 
-            //find all files for processing
-            // and run the pipeline for each
+                context = postProcessor.Run(context);
+            }
 
+            return context;
+        }
 
-            return postProcessor.Run(context);
+        private IEnumerable<string> GetFilesToProcess(string path)
+        {
+            return Directory.GetDirectories(path);
         }
     }
 }

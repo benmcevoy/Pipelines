@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Pipes;
 
 namespace BlogPipeline.Publish
@@ -11,7 +7,7 @@ namespace BlogPipeline.Publish
     {
         public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
-            throw new NotImplementedException();
+            return context;
         }
     }
 }

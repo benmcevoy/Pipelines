@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using Pipes;
 
@@ -21,21 +20,13 @@ namespace BlogPipeline.Extract.Process
             _log.Log("EnsureFolderFilter:" + post.Published);
 
             var basePath = "out";
-            var year = post.Published.Year.ToString(CultureInfo.InvariantCulture);
-            var month = post.Published.Month.ToString(CultureInfo.InvariantCulture);
-            var day = post.Published.Day.ToString(CultureInfo.InvariantCulture);
-            var slug = post.Slug;
 
-            var final = Path.Combine(basePath, year, month, day, slug);
+            var slug = Path.Combine(basePath, post.Slug);
 
             EnsureFolder(basePath);
-            EnsureFolder(Path.Combine(basePath, year));
-            EnsureFolder(Path.Combine(basePath, year, month));
-            EnsureFolder(Path.Combine(basePath, year, month, day));
+            EnsureFolder(slug);
 
-            EnsureFolder(final);
-
-            post.Path = final;
+            post.Path = slug;
 
             context.SetPost(post);
 

@@ -40,12 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Conventions">
-      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
-    </Reference>
     <Reference Include="Radio7.HtmlCleaner">
       <HintPath>..\packages\Radio7.HtmlCleaner.1.0.1\lib\net45\Radio7.HtmlCleaner.dll</HintPath>
     </Reference>
@@ -70,7 +64,7 @@
     <Compile Include="Extract\Process\StringExtensions.cs" />
     <Compile Include="Extract\Process\WriteMarkdownFilter.cs" />
     <Compile Include="Extract\Process\WriteMetaFilter.cs" />
-    <Compile Include="Extract\Runner.cs" />
+    <Compile Include="Extract\ExtractFromFunnelwebPipeline.cs" />
     <Compile Include="ILog.cs" />
     <Compile Include="Markdown.cs" />
     <Compile Include="Program.cs" />
@@ -79,6 +73,7 @@
     <Compile Include="Publish\CreatePostContextFilter.cs" />
     <Compile Include="Publish\CreatePostPage.cs" />
     <Compile Include="Publish\EnsurePublishedFolder.cs" />
+    <Compile Include="Publish\Post.cs" />
     <Compile Include="Publish\ProcessFolders.cs" />
     <Compile Include="Publish\PublishPipeline.cs" />
   </ItemGroup>
@@ -94,10 +89,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="process.txt" />
+    <Content Include="Publish\Templates\Page.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Publish\Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
