@@ -35,7 +35,7 @@
 <li>The work flow in TryUpgrade - IsUpgradeRequired? Upgrade, Complete</li>
 </ul>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public abstract class UpgradeBase
     {
         private static Mutex _mutex = new Mutex(false, "{C4A348B4-4FF3-4506-B1DD-73B237B0B58C}");
@@ -95,7 +95,7 @@
 
 <p>The version attribute is defined simply as:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     [AttributeUsage(AttributeTargets.Assembly|AttributeTargets.Class)]
     public class VersionAttribute : Attribute
     {
@@ -110,13 +110,13 @@
 
 <p>The app's version is represented as an Assembly attribute, in the AssemblyInfo.cs class of the Upgrade assembly.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     [assembly: Radio7.Phone.Version.Version(1)]
 </code></pre>
 
 <p>Each Upgrade class with have a version as well.  This represents the version this class will upgrade the app to.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     [Version(1)]
     public class MyUpgrade : UpgradeBase
     {
@@ -145,7 +145,7 @@
 
 <p>From my App.xaml.cs App ctor, for instance we can call</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     private void UpgradeApplication()
     {
         try
@@ -169,7 +169,7 @@
 
 <p>I would have liked to have not passed the assembly in via reflection, and just scan for any upgrade classes, but unfortunately I do not currently know how to do that.  That would be nice, then perhaps shit would "just work" - add some Upgrade classes and they just get applied automagically. AppDomain.CurrentDomain.GetAssemblies()?  Version2!</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public static class UpgradeHelper
     {
         private static Mutex _mutex = new Mutex(false, "{25D25F8A-9A59-4306-83B0-D4928783645B}");

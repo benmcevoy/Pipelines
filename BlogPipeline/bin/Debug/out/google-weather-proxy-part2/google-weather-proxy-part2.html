@@ -14,7 +14,7 @@
 
 <p>The codes;)</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 $(function() {
     navigator.geolocation.getCurrentPosition(function(pos) {
         var lat = pos.coords.latitude;
@@ -49,7 +49,7 @@ If this was production code I would:</p>
 
 <p>Note also that Google allows content negotiation. We could have called that geo code url and got JSON back instead.  It looks like this API does not support JSONP, <a href="https://code.google.com/apis/maps/documentation/javascript/">but this one here might</a>.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public class WeatherProxy : IHttpHandler
     {
         private HttpContext _context;
@@ -129,7 +129,7 @@ If this was production code I would:</p>
 
 <p>Client side is not looking too crash hot either, to be honest.  Some tidy up around the string concatenation would be nice.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     &lt;h2&gt;How's the weather?&lt;/h2&gt;
     &lt;div id="weather"&gt; &lt;/div&gt;
     &lt;div&gt;

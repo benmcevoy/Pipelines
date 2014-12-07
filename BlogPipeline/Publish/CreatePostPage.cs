@@ -18,8 +18,12 @@ namespace BlogPipeline.Publish
             var post = (PostToProcess)context["currentpost"];
 
             var html = PageTemplate.Replace("{{renderbody}}", post.BodyHtml);
+            html = html.Replace("{{title}}", post.Meta.Title);
+            html = html.Replace("{{keywords}}", post.Meta.Keywords);
+            html = html.Replace("{{summary}}", post.Meta.Summary);
 
-            File.WriteAllText(string.Format("{0}{1}.html", Path.Combine("published", post.RelativePath), post.Meta.Slug), html);
+
+            File.WriteAllText(string.Format("{0}{1}.html", Path.Combine("published", post.RelativePath), "index"), html);
 
             return context;
         }

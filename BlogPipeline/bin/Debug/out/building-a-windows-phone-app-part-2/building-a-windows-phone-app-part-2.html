@@ -27,7 +27,7 @@ Return an empty model with a "loading" message for the summary and go from there
 
 <p>I am not too familar with the phone startup lifecycle (yet).  Statrtup is controlled in the usual way, with the main entry point being the App constructor.  There are a couple of methods with warnings <em>Do not add any additional code to this method</em> which look like the best place to configure this stuff:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         // Do not add any additional code to this method
         private void InitializePhoneApplication()
         {
@@ -62,7 +62,7 @@ Return an empty model with a "loading" message for the summary and go from there
 
 <p>There are some <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsphone7series/thread/2b6c0d94-8e03-4235-88b7-e77fb0911b86/">scary warnings</a> about messing with these startup objects.  Coupled with my inexperience I'm just going to skip it and set my View dataContext in the code behind of the view.  It's not ideal, but oh well.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor

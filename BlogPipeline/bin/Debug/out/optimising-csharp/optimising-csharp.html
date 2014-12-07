@@ -8,7 +8,7 @@
 
 <p>Now someone on the internet had said that accessing a class member was slow.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     private float _member;
 
     // do something with that class member
@@ -28,7 +28,7 @@
 
 <p>So the wisdom is to inline that reference:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     private float _member;
 
     // inline it
@@ -68,7 +68,7 @@ Well, the phone is a wee bit slower than my desktop, so running in the 512MB emu
 
 <p>OK, so the wise internet monkeys also pronounce that property access is killer. And you could reason easily that property access probably involves more CPU, as it must go to the backing member.  But surely compiler optimisations will make that cool?</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public float Member { get; set; }
 
     // do something with that property
@@ -112,7 +112,7 @@ Well, the phone is a wee bit slower than my desktop, so running in the 512MB emu
 
 <p>However, if your properties are doing more than just getting and setting a backing member, well you should probably turn them into methods anyway.  For the common and trivial case of something like:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         private float _myProperty;
         public float MyProperty { get { return _myProperty; } set { _myProperty = value; } }
 </code></pre>
@@ -129,7 +129,7 @@ Well, the phone is a wee bit slower than my desktop, so running in the 512MB emu
 
 <h3>Test Harness</h3>
 
-<pre><code>
+<pre class='prettyprint'><code>
     static void Main(string[] args)
     {
         var tc = new TestClass();
@@ -190,7 +190,7 @@ Well, the phone is a wee bit slower than my desktop, so running in the 512MB emu
 
 <h3>Test Class</h3>
 
-<pre><code>
+<pre class='prettyprint'><code>
     class TestClass
     {
         private float _member;

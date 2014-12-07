@@ -10,7 +10,7 @@
 
 <p>To keep the typing to a minimum we can automagically log the originating method of the logged message:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
        // grab calling frame
        var frame = new StackFrame(1, false);
        // grab the namespace and method name
@@ -24,7 +24,7 @@
 
 <p>Another handy helper lets me write out ADO commands.  Often we’ll be using some ORM or another which often have their own methods of emitting the executed SQL, but if your rocking ADO.NET then:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         public static void Info(DbCommand command)
         {
             if (_logger.IsInfoEnabled)
@@ -58,7 +58,7 @@
 
 <p>One last thing that has been proving useful isn’t in the logging class (but maybe it could be) and that’s a little ToJson() extension method on <strong>object</strong> to let us easily write out an object in a meaningful way using the <strong>System.Web.Script.Serialization.JavaScriptSerializer</strong>.</p>
 
-<p><pre><code>
+<p><pre class='prettyprint'><code>
   public static void ToJson(this object value)
   {
         return _serializer.Serialize(value);

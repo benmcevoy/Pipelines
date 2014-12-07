@@ -4,7 +4,7 @@
 
 <p>We need to POST a bookmark or GET the RSS feed.  This is quick and dirty - a handler:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
  public class Bookmarks : IHttpHandler
     {
         public void ProcessRequest(HttpContext context)
@@ -106,7 +106,7 @@
 
 <p>The javascriptlet just POSTs the current location.href and document.title, something like this, but minified:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 var http = new XMLHttpRequest();
 var url = "http://www.theinternets.com/bookmarks.ashx";
 var params = "bm=" + location.href + "&t=" + document.title;

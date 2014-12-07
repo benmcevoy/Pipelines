@@ -1,6 +1,6 @@
 <p>If you are making web requests on the windows phone you should check network availability first.  </p>
 
-<pre><code>
+<pre class='prettyprint'><code>
      Microsoft.Phone.Net.NetworkInformation.DeviceNetworkInformation.IsNetworkAvailable
 </code></pre>
 
@@ -8,7 +8,7 @@
 
 <p>The API offers:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
      DeviceNetworkInformation.IsWiFiEnabled
 </code></pre>
 
@@ -16,13 +16,13 @@
 
 <p>You must also check the <em><a href="http://msdn.microsoft.com/en-US/library/windowsphone/develop/microsoft.phone.net.networkinformation.networkinterfacetype(v=vs.105).aspx">NetworkInterfaceType</a></em>.  Note that the majority of interface types are not supported on the phone. There is really only <strong>Wireless80211</strong>, <strong>MobileBroadbandGsm</strong> and <strong>MobileBroadbandCdma</strong> to worry about.  I <em>believe</em> <strong>Ethernet</strong> is available when connected to a PC with Zune running, as I <em>think</em> Zune allows the phone to piggy back off the PC's network connection. AFAIK.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     NetworkInterface.NetworkInterfaceType == NetworkInterfaceType.Wireless80211
 </code></pre>
 
 <p>Put it all together.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 
         private bool IsWifiConnected()
         {

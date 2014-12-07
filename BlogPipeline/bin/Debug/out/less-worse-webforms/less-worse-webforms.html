@@ -6,7 +6,7 @@
 
 <p>Routing is one of these, but to get the best out of it you'll also want to nuget in some Friendly Urls:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 Install-Package Microsoft.AspNet.FriendlyUrls
 </code></pre>
 
@@ -14,7 +14,7 @@ Install-Package Microsoft.AspNet.FriendlyUrls
 
 <p>The Friendly Urls package <a href="http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx">includes a few things</a>, and supports .NET 4, but for my purposes I care only for <em>EnableFriendlyUrls()</em> which will effectively turn on extensionless urls for a webforms project.  Probably in your RouteConfig class:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var settings = new FriendlyUrlSettings();
     routes.EnableFriendlyUrls(settings);
 </code></pre>
@@ -25,13 +25,13 @@ Install-Package Microsoft.AspNet.FriendlyUrls
 
 <p>For instance, we can map request values (query string or form) to placeholders in the url:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     routes.MapPageRoute("AboutRoute", "About/{param1}/{*param2}", "~/about.aspx");
 </code></pre>
 
 <p>And we can map arbitrary friendly urls to existing pages:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     routes.MapPageRoute("AnotherRoute", "TotallyFriendlyUrl/{param1}/{*param2}", "~/about.aspx");
 </code></pre>
 
@@ -43,7 +43,7 @@ Install-Package Microsoft.AspNet.FriendlyUrls
 
 <p>Quick, my beer is getting warm, we have an expression builder so we can make friendly urls declaratively in an aspx page:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 &lt;asp:HyperLink ID="HyperLink5" runat="server" 
     NavigateUrl="&lt;%$RouteUrl:locale=CA,year=2009,routename=salesroute%&gt;"&gt;
     Sales Report - CA, 2009

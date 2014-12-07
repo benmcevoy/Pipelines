@@ -25,7 +25,7 @@
 
 <p>My first attempt went something like:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
   var original = window.ValidatorValidate;
 
   window.ValidatorValidate = function(){
@@ -42,7 +42,7 @@ the jQuery API docs</a>.</p>
 
 <p>In the end I've settled on the following.  It adds an "error" class to invalid elements. I took a dependency on jQuery as I couldn't be bothered writing addClass/removeClass functions. This function should be run onready, or after webuivalidation.js has loaded.  It's self executing so just drop it in and see what breaks!</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
   (function ($) {
     if (window.ValidatorUpdateDisplay) {
         var proxied = window.ValidatorUpdateDisplay;

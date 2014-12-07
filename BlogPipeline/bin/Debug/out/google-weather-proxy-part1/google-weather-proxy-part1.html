@@ -12,7 +12,7 @@ And for laughs, let's chuck in some <a href="http://dev.w3.org/geo/api/spec-sour
 
 <p>But first, let’s get a handler together and make the request.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public class WeatherProxy : IHttpHandler
     {
         private string _googleWeatherUrl = "http://www.google.com/ig/api?weather={0}";
@@ -48,7 +48,7 @@ And for laughs, let's chuck in some <a href="http://dev.w3.org/geo/api/spec-sour
 
 <p>Change the mime type and a little refactoring and we should be good.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         private void WriteJsonResponse(HttpContext context, string result)
         {
             context.Response.Clear();
@@ -74,7 +74,7 @@ And for laughs, let's chuck in some <a href="http://dev.w3.org/geo/api/spec-sour
 <p>Now we are in a position where we can consume that JSON in javascript.  Albeit only from the same domain. And only in Melbourne (hey, guess where I live!).
 Firebug has let me easily inspect the returned JSON and hoover out the path.  It’s <a href="http://www.youtube.com/watch?v=4r7wHMg5Yjg">nasty</a>, but it mostly works.  </p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     &lt;h2&gt;How's the weather?&lt;/h2&gt;
 
     &lt;div id="weather"&gt;

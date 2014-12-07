@@ -20,7 +20,7 @@ namespace BlogPipeline.Extract.Process
             _log.Log("WriteMarkdownFilter: " + post.Path);
 
             var md = new Markdown("");
-            var article = md.Render(post.Body);
+            var article = md.Render(post.Body).Replace("<pre>", "<pre class='prettyprint'>");
 
             var mdPath = string.Format("{0}\\{1}.md", post.Path, post.Slug);
             var htmlPath = string.Format("{0}\\{1}.html", post.Path, post.Slug);

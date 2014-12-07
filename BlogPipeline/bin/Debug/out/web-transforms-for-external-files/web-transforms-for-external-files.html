@@ -22,7 +22,7 @@
 
 <p>Add a web transform and use the Condition locator.  Say <strong>Web.Staging.config</strong>:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     &lt;myModule configsource="config/myModule.<strong>STAGING</strong>.config" 
           xdt:Locator="Condition(@configSource='config/myModule.config')" 
           xdt:Transfrom="Replace" /&gt;

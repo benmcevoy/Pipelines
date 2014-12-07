@@ -14,7 +14,7 @@
 
 <p>For each point on the map I am interested in I have a model item that implements ILocationItem</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public interface ILocationItem
     {
         int Id { get;  }
@@ -29,7 +29,7 @@
 
 In order to cluster these items I provide the set of location items, the geographic boundary we are interested in (the map boundary) and some threshold to control the level of clustering:
 
-<pre><code>
+<pre class='prettyprint'><code>
     public interface ILocationItemClusterer
     {
         IEnumerable&lt;ClusteredLocationItem&gt; Cluster(IEnumerable&lt;ILocationItem&gt; items, 
@@ -41,7 +41,7 @@ In any algorithm the first thing I'd want to do is discard points that are outsi
 
 I have a nice way to filter the items, taking advantage of yield:
 
-<pre>
+<pre class='prettyprint'>
 <code>
         public static IEnumerable&lt;ILocationItem&gt; IsInBoundary(this IEnumerable&lt;ILocationItem&gt; items, LocationRect boundary)
         {
@@ -62,7 +62,7 @@ I have a nice way to filter the items, taking advantage of yield:
 
 <p>We can group or cluster these location items together inside a ClusteredLocationItem</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -152,7 +152,7 @@ namespace Radio7.Phone.Common.Location
 
 <p>Firstly we split our bounding rectangle up into a grid of cells, or sectors.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         private IEnumerable&lt;LocationRect&gt; GetSectorRects(LocationRect boundingRectangle, double sectorOrdinal)
         {
             var sectors = new List&lt;LocationRect&gt;();
@@ -184,7 +184,7 @@ namespace Radio7.Phone.Common.Location
 
 <p>Now that we have our sectors we need to check if a point belongs to one and start actually clustering results.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         public IEnumerable&lt;ClusteredLocationItem&gt; Cluster(IEnumerable&lt;ILocationItem&gt; items, LocationRect boundingRectangle, double sectorOrdinal)
         {
             var clusters = new List&lt;ClusteredLocationItem&gt;();
@@ -234,7 +234,7 @@ namespace Radio7.Phone.Common.Location
 
 <p>This algorithm turns out be simpler, faster and produces more aesthetically pleasing results.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 using System;
 using System.Collections.Generic;
 using Microsoft.Phone.Controls.Maps;
@@ -287,7 +287,7 @@ namespace Radio7.Phone.Common.Location
 
 <h3>Using the Clusterer</h3>
 
-<pre><code>
+<pre class='prettyprint'><code>
        private void UpdateMap()
         {
             var clusters = _clusterer.Cluster(_repository.Get().Cast&lt;ILocationItem&gt;(), MapControl.BoundingRectangle, MapControl.ZoomLevel);

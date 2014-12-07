@@ -10,13 +10,13 @@
 
 <p>Behold.  Add a placeholder to the ASPX, prehaps at the bottom of the page.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 &lt;asp:PlaceHolder runat="server" ID="ScriptsPlaceHolder"&gt;&lt;/asp:PlaceHolder&gt;
 </code></pre>
 
 <p>In the user control we have a little javascript snippet, prehaps to hook up a click event. Who knows.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     html normally goes here
 
     &lt;my:RenderPlaceHolder runat="server" PlaceHolderId="ScriptsPlaceHolder"&gt;
@@ -31,7 +31,7 @@
 
 <p>The RenderPlaceHolder control will look up into the page and find the corresponding PlaceHolder control, dumping it's content into it.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     using System.Web.UI;
 
     [ParseChildren(true, "Content")]

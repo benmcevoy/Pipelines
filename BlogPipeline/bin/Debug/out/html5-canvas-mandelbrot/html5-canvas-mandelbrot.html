@@ -9,7 +9,7 @@ And I have to say that I was very very pleased with the results :)  Not that it 
 
 <p>Hard to explain, but basically for a complex number pretend the real part is on the x axis and imaginary is y.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 var cn = new complexNumber(1, 1);  // real is 1, imaginary part is 1i
 </code></pre>
 
@@ -25,7 +25,7 @@ var cn = new complexNumber(1, 1);  // real is 1, imaginary part is 1i
 
 <p>if we write that as code it’s a bit easier to see:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         var z = new complexNumber(0, 0);
         var c = new complexNumber(x, y);
 
@@ -42,7 +42,7 @@ var cn = new complexNumber(1, 1);  // real is 1, imaginary part is 1i
 
 <p>A complex number class.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var complexNumber = function (real, imaginary) {
         this.r = real;
         this.i = imaginary;
@@ -73,7 +73,7 @@ var cn = new complexNumber(1, 1);  // real is 1, imaginary part is 1i
 <p>This is sweet.  With the prototype pattern we can declared class level members using the this keyword, so this.r and this.i are now available throughout the class. They are also available as properties or fields on the class as well.
 The other very nice thing is we can now say </p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var cn = new complexNumber(1, 1);  // real is 1, imaginary part is 1i
 </code></pre>
 
@@ -85,7 +85,7 @@ The other very nice thing is we can now say </p>
 
 <p>The code to calculate the Mandelbrot set and render it on the canvas I wrote using the module pattern.  This pattern I also really like! Mainly because it feels a lot like writing c#</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 var mandelbrot = function () {
 
     var _options;

@@ -9,10 +9,10 @@ namespace BlogPipeline
     {
         static void Main(string[] args)
         {
-            new ExtractFromFunnelwebPipeline(new ConsoleLog()).Run( CreateContext());
+           // new ExtractFromFunnelwebPipeline(new ConsoleLog()).Run( CreateContext());
 
             new PublishPipeline().Run(CreateContext());
-
+            Console.WriteLine("finished");
             Console.ReadKey();
         }
 

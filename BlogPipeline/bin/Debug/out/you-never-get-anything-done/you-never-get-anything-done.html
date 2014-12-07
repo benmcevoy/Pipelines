@@ -8,7 +8,7 @@
 
 <p>While writing it I assumed that there must be some exponential relationship happening, for each level of zoom an order of magnitude more or less of map was being displayed.  So I chucked a few numbers in and quickly came to:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var threshold = 8192 / Math.Exp(zoomLevel); 
 </code></pre>
 
@@ -36,7 +36,7 @@
 
 <p>My new and improved tweaked formula:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var threshold = 560 * Math.Exp(-0.854 * zoomLevel); 
 </code></pre>
 
@@ -74,7 +74,7 @@
 
 <p>Given all that I can now write, with some confidence:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     var threshold = Math.Pow(2f, 16f - zoomLevel) / 1113.2;
 </code></pre>
 
@@ -92,7 +92,7 @@
 
 <p>As there is a lot of logic embedded in those formulas I refactored them to be a bit more meaningful, as the next time I look at this I will NOT remember a damn thing.  They have also been tweaked further to give me more control over the size of the cluster, and the cluster size has been increased slightly to 150m at zoom level 16:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 
      private const double EquatorialLatitudeMetersPerDegree = 111319.5431527;
 

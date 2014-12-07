@@ -1,6 +1,6 @@
 <p>I'm stuck in WebForms land at the moment.  Using asp:Repeaters to render a collection of objects, repeater is bound to an collection of viewmodels in the code behind (datasource/databind):</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
       &lt;asp:Repeater runat="server"&gt;
          &lt;ItemTemplate&gt;
             &lt;label&gt;Product&lt;/label&gt;
@@ -31,7 +31,7 @@ And a helper to cast the Container.DataItem as ProductViewModel.</p>
 
 <p>I believe WebForms 4.5 has something like this built in. Did I mention I'm stuck in .NET 2.0?  And surely AutoMapper does this?</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public static IEnumerable&lt;T&gt; Bind&lt;T&gt;(string prefix, NameValueCollection form)
            where T : new()
         {

@@ -6,7 +6,7 @@
 
 <p>For instance, we have a Vector struct in C#</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public struct Vector
     {
         public Vector(double x, double y)
@@ -48,7 +48,7 @@
 
 And now in Javascript
 
-<pre><code>
+<pre class='prettyprint'><code>
 var Vector = function (x, y) {
     this.x = x;
     this.y = y;
@@ -73,7 +73,7 @@ Vector.prototype.add = function(value){
 
 EventHandlers are replaced with callbacks - 
 
-<pre>
+<pre class='prettyprint'>
 <code>
  public event EventHandler UniverseCleared;
 
@@ -90,7 +90,7 @@ EventHandlers are replaced with callbacks -
 
 <p>Becomes...</p>
 
-<pre>
+<pre class='prettyprint'>
 <code>
 // inject the callback
 var Universe = function (onUniverseCleared, onBodyRemoved) {

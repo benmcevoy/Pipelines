@@ -22,7 +22,7 @@
 
 <p>Usage:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
 
     using (var context = new DataContext())
             {
@@ -46,7 +46,7 @@
 
 </code></pre>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public static void DownloadAsCsv&lt;T&gt;(HttpContext httpContext, IQueryable&lt;T&gt; query, string fileName, int pageSize = 500) where T : class
         {
             var pageNumber = 0;

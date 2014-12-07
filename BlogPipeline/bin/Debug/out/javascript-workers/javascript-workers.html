@@ -25,7 +25,7 @@ onMessage – listen for message events</p>
 
 <p>We set up a worker in the UI:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     _worker1 = new Worker('/js/mandelbrot.worker.js');
     // listen for messages coming back
     _worker1.addEventListener('message', function (event) {
@@ -36,7 +36,7 @@ onMessage – listen for message events</p>
 
 <p>Then we must pass some data to operate on.  The canvas data is really just a big array of data, so I grab out a chunk, work out where we are in the set and then fire it off:</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
         _worker1.postMessage({ canvasData: _context.getImageData(0, 0, width, height),
             options: { width: width, height: height, origin: origin1, zoom: _options.zoom }
         });
@@ -44,7 +44,7 @@ onMessage – listen for message events</p>
 
 <p>The _canvas.getImageData just grabs out the subset of the array for this quadrant.  We post this message to the worker who immediately starts calculating.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     // this event is raised when a message is received on the worker
 onmessage = function (event) {
         _canvasData = event.data.canvasData;

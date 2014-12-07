@@ -15,7 +15,7 @@
 First of all we want to create a source of messages.
 Here we just send a very basic string.  In practice you may want to create a message class, perhaps with a message type, Id and maybe a serialized DTO payload.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     // create a queue
     if (!MessageQueue.Exists(_queueName))
     {
@@ -50,7 +50,7 @@ Here we just send a very basic string.  In practice you may want to create a mes
 <p>By default MSMQ uses an XML message formatter, and reading the message body is done through streams.  This is sometimes a bit inconvenient.
 I’ve added a simple message formatter (nicked from MSDN) to ease things.</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public class MessageFormatter : IMessageFormatter
     {
     	public bool CanRead(Message message)
@@ -92,7 +92,7 @@ I’ve added a simple message formatter (nicked from MSDN) to ease things.</p>
 
 <p>We can then start up several process, just simple console apps, to listen to the queue and read the messages.  I was running three or four, and they would read the messages off the queue in a round robin fashion.  I found that quite pleasing :)</p>
 
-<pre><code>
+<pre class='prettyprint'><code>
     public static void MonitorQueue ()
     {
     	var myQueue = new MessageQueue(_queueName);
