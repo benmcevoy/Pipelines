@@ -7,10 +7,12 @@ namespace BlogPipeline.Publish
     class CreatePostPage : IFilter
     {
         private static readonly string PageTemplate;
+        private static readonly string NavPartial;
 
         static CreatePostPage()
         {
             PageTemplate = File.ReadAllText("Publish\\Templates\\page.html");
+            NavPartial = File.ReadAllText("Publish\\Templates\\_nav.html");
         }
 
         public IDictionary<string, object> Run(IDictionary<string, object> context)
@@ -22,6 +24,7 @@ namespace BlogPipeline.Publish
             html = html.Replace("{{keywords}}", post.Meta.Keywords);
             html = html.Replace("{{summary}}", post.Meta.Summary);
             html = html.Replace("{{published}}", post.Meta.Published.ToString("dddd MMMM yyyy"));
+            html = html.Replace("{{nav}}", NavPartial);
 
             File.WriteAllText(string.Format("{0}{1}.html", Path.Combine("published", post.RelativePath), "index"), html);
 
@@ -29,3 +32,4 @@ namespace BlogPipeline.Publish
         }
     }
 }
+

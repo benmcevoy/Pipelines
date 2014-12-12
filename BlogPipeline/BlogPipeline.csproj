@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="process.txt" />
+    <Content Include="Publish\Templates\_nav.html" />
     <Content Include="Publish\Templates\Navigation.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
