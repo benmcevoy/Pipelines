@@ -11,10 +11,10 @@ namespace BlogPipeline.Publish
 
             postProcessor.Create(new IFilter[]
             {
+                new SetupContext(), 
                 new CreateNavigationPartial(), 
                 new ProcessFolders(),  
-                
-
+                new CreateHomePage(), 
             });
 
             return postProcessor.Run(context);

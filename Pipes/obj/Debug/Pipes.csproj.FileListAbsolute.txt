@@ -2,3 +2,4 @@ D:\Dev\git\Pipelines\Pipes\bin\Debug\Pipes.dll
 D:\Dev\git\Pipelines\Pipes\bin\Debug\Pipes.pdb
 D:\Dev\git\Pipelines\Pipes\obj\Debug\Pipes.dll
 D:\Dev\git\Pipelines\Pipes\obj\Debug\Pipes.pdb
+D:\Dev\git\Pipelines\Pipes\obj\Debug\Pipes.csprojResolveAssemblyReference.cache

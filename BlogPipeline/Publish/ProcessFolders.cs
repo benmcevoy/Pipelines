@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using Pipes;
 
 namespace BlogPipeline.Publish
@@ -12,25 +11,20 @@ namespace BlogPipeline.Publish
 
             postProcessor.Create(new IFilter[]
             {
-                new CreatePostContextFilter(), 
                 new EnsurePublishedFolder(), 
                 new EnsureNavigationPage(), 
                 new CreatePostPage(),
             });
 
-            foreach (var fileToProcess in GetFilesToProcess("out"))
-            {
-                context["currentpath"] = fileToProcess;
+            var posts = (List<PostToProcess>)context["posts"];
 
+            foreach (var postToProcess in posts)
+            {
+                context["currentpost"] = postToProcess;
                 context = postProcessor.Run(context);
             }
 
             return context;
-        }
-
-        private IEnumerable<string> GetFilesToProcess(string path)
-        {
-            return Directory.GetDirectories(path);
         }
     }
 }

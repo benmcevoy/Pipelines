@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using Newtonsoft.Json;
 using Pipes;
 
 namespace BlogPipeline.Publish
@@ -12,21 +10,7 @@ namespace BlogPipeline.Publish
     {
         public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
-            var posts = new List<PostToProcess>(32);
-
-            foreach (var fileToProcess in GetFilesToProcess("out"))
-            {
-                var meta = JsonConvert.DeserializeObject<Meta>(File.ReadAllText(fileToProcess + "\\meta.json"));
-
-                var post = new PostToProcess
-                {
-                    BodyHtml = File.ReadAllText(fileToProcess + "\\" + meta.Slug + ".html"),
-                    Meta = meta,
-                    RelativePath = string.Format("{0:yyyy}\\{0:MM}\\{1}\\", meta.Published, meta.Slug)
-                };
-
-                posts.Add(post);
-            }
+            var posts = (List<PostToProcess>)context["posts"];
 
             var years =
                 posts.OrderByDescending(process => process.Meta.Published)
@@ -45,7 +29,6 @@ namespace BlogPipeline.Publish
             return context;
         }
 
-
         private static Tuple<int, string> ToNav(IEnumerable<PostToProcess> postsForTheYear)
         {
             var inner = new StringBuilder();
@@ -54,15 +37,12 @@ namespace BlogPipeline.Publish
 
             foreach (var post in postToProcesses)
             {
-                inner.AppendFormat(Inner, string.Format("/{0:yyyy}/{0:MM}/{1}", post.Meta.Published, post.Meta.Slug), post.Meta.Title);
+                inner.AppendFormat(
+                    Inner, 
+                    string.Format("/{0:yyyy}/{0:MM}/{1}", post.Meta.Published, post.Meta.Slug), post.Meta.Title);
             }
 
             return new Tuple<int, string>(postToProcesses.First().Meta.Published.Year, inner.ToString());
-        }
-
-        private static IEnumerable<string> GetFilesToProcess(string path)
-        {
-            return Directory.GetDirectories(path);
         }
 
         private const string Inner = @"<li><a href=""{0}"">{1}</a></li>";
