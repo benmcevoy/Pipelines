@@ -11,8 +11,9 @@ namespace BlogPipeline.Publish
 
             postProcessor.Create(new IFilter[]
             {
+                new CreateNavigationPartial(), 
                 new ProcessFolders(),  
-                new CreateNavigationPages(), 
+                
 
             });
 

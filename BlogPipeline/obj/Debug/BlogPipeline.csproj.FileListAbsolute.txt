@@ -17,3 +17,4 @@ D:\Dev\git\Pipelines\BlogPipeline\bin\Debug\Newtonsoft.Json.dll
 D:\Dev\git\Pipelines\BlogPipeline\bin\Debug\Newtonsoft.Json.xml
 D:\Dev\git\Pipelines\BlogPipeline\bin\Debug\Publish\Templates\Page.html
 D:\Dev\git\Pipelines\BlogPipeline\bin\Debug\Publish\Templates\Navigation.html
+D:\Dev\git\Pipelines\BlogPipeline\bin\Debug\Publish\Templates\_nav.html

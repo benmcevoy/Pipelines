@@ -14,6 +14,7 @@ namespace BlogPipeline.Publish
             {
                 new CreatePostContextFilter(), 
                 new EnsurePublishedFolder(), 
+                new EnsureNavigationPage(), 
                 new CreatePostPage(),
             });
 
