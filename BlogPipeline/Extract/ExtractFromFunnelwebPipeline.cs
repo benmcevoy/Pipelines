@@ -14,9 +14,7 @@ namespace BlogPipeline.Extract
 
          public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
-            var pipeline = new Pipeline();
-
-            pipeline.Create(new IFilter[]
+            var pipeline = Pipeline.Create(new IFilter[]
             {
                 new GetPostsFilter(_log), 
             });

@@ -5,16 +5,21 @@ namespace Pipes
 {
     public class Pipeline : IFilter
     {
-        private IEnumerable<IFilter> _filters;
+        private readonly IEnumerable<IFilter> _filters;
 
-        public Pipeline()
+        protected Pipeline()
         {
             _filters = new List<IFilter>(32);
         }
 
-        public void Create(IEnumerable<IFilter> filters)
+        protected Pipeline(IEnumerable<IFilter> filters)
         {
             _filters = filters;
+        }
+
+        public static Pipeline Create(IEnumerable<IFilter> filters)
+        {
+            return new Pipeline(filters);
         }
 
         public IDictionary<string, object> Run(IDictionary<string, object> context)

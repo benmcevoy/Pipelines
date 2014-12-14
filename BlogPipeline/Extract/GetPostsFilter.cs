@@ -5,7 +5,7 @@ using Pipes;
 
 namespace BlogPipeline.Extract
 {
-    class GetPostsFilter :IFilter
+    class GetPostsFilter : IFilter
     {
         private readonly ILog _log;
 
@@ -17,7 +17,7 @@ namespace BlogPipeline.Extract
         public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
             var processor = CreatePostPipeline();
-            
+
             foreach (var post in GetPosts())
             {
                 context[Constants.CurrentPostContextKey] = post;
@@ -30,43 +30,37 @@ namespace BlogPipeline.Extract
         private static IEnumerable<Post> GetPosts()
         {
             using (var cn = new SqlConnection(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=funnelweb;Data Source=TOWER\SQLEXPRESS;"))
+            using (var cmd = new SqlCommand())
             {
-                using (var cmd = new SqlCommand())
+                cmd.Connection = cn;
+
+                cmd.CommandText = @"SELECT [Name], [Title], [Published], [Body] FROM [dbo].[Entry]";
+
+                cn.Open();
+
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    cmd.Connection = cn;
-
-                    cmd.CommandText = @"SELECT [Name], [Title], [Published], [Body] FROM [dbo].[Entry]";
-
-                    cn.Open();
-
-                    var reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
+                    yield return new Post
                     {
-                        yield return new Post
-                        {
-                            Title = (string)reader.GetValue(1),
-                            Body = (string)reader.GetValue(3),
-                            Published = reader.GetDateTime(2),
-                            Slug = (string)reader.GetValue(0),
-                        };
-                    }
+                        Title = (string)reader.GetValue(1),
+                        Body = (string)reader.GetValue(3),
+                        Published = reader.GetDateTime(2),
+                        Slug = (string)reader.GetValue(0),
+                    };
                 }
             }
         }
 
         private Pipeline CreatePostPipeline()
         {
-            var pipeline = new Pipeline();
-
-            pipeline.Create(new IFilter[]
+            return Pipeline.Create(new IFilter[]
             {
                 new EnsureFolderFilter(_log), 
                 new WriteMetaFilter(_log), 
                 new WriteMarkdownFilter(_log)
             });
-
-            return pipeline;
         }
     }
 }

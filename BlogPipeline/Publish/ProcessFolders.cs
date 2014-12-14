@@ -7,9 +7,7 @@ namespace BlogPipeline.Publish
     {
         public IDictionary<string, object> Run(IDictionary<string, object> context)
         {
-            var postProcessor = new Pipeline();
-
-            postProcessor.Create(new IFilter[]
+            var postProcessor = Pipeline.Create(new IFilter[]
             {
                 new EnsurePublishedFolder(), 
                 new EnsureNavigationPage(), 
