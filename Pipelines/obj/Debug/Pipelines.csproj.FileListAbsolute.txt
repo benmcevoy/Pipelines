@@ -1,6 +1,0 @@
-D:\Dev\git\Pipelines\Pipelines\bin\Debug\Pipelines.exe.config
-D:\Dev\git\Pipelines\Pipelines\bin\Debug\Pipelines.exe
-D:\Dev\git\Pipelines\Pipelines\bin\Debug\Pipelines.pdb
-D:\Dev\git\Pipelines\Pipelines\obj\Debug\Pipelines.csprojResolveAssemblyReference.cache
-D:\Dev\git\Pipelines\Pipelines\obj\Debug\Pipelines.exe
-D:\Dev\git\Pipelines\Pipelines\obj\Debug\Pipelines.pdb

@@ -48,6 +48,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +74,7 @@
     <Compile Include="Publish\CreateHomePage.cs" />
     <Compile Include="Publish\CreateNavigationPartial.cs" />
     <Compile Include="Publish\CreatePostPage.cs" />
+    <Compile Include="Publish\CreateRssFeed.cs" />
     <Compile Include="Publish\EnsureNavigationPage.cs" />
     <Compile Include="Publish\EnsurePublishedFolder.cs" />
     <Compile Include="Publish\Post.cs" />
@@ -82,6 +85,23 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="published\assets\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="published\assets\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="published\assets\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="published\assets\LICENSE" />
+    <None Include="published\assets\README.md" />
+    <Content Include="published\feed\web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="published\web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pipes\Pipes.csproj">
@@ -91,6 +111,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="process.txt" />
+    <Content Include="published\assets\css\blog-post.css" />
+    <Content Include="published\assets\css\bootstrap.css" />
+    <Content Include="published\assets\css\bootstrap.min.css" />
+    <Content Include="published\assets\css\prettify.css" />
+    <Content Include="published\assets\css\site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="published\assets\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="published\assets\js\bootstrap.js" />
+    <Content Include="published\assets\js\bootstrap.min.js" />
+    <Content Include="published\assets\js\jquery.js" />
+    <Content Include="published\assets\js\prettify.js" />
+    <Content Include="published\assets\js\site.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Publish\Templates\_nav.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

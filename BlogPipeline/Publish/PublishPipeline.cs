@@ -15,6 +15,7 @@ namespace BlogPipeline.Publish
                 new CreateNavigationPartial(), 
                 new ProcessFolders(),  
                 new CreateHomePage(), 
+                new CreateRssFeed(), 
             });
 
             return postProcessor.Run(context);
