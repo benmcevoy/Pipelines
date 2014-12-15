@@ -45,7 +45,7 @@ namespace BlogPipeline.Publish
             return new Tuple<int, string>(postToProcesses.First().Meta.Published.Year, inner.ToString());
         }
 
-        private const string Inner = @"<li><a href=""{0}"">{1}</a></li>";
+        private const string Inner = @"<li><a href=""{0}/"">{1}</a></li>";
 
         private const string Outer = @"<div class=""col-md-4"">
                 <div class=""well"">

@@ -62,6 +62,6 @@ namespace BlogPipeline.Publish
             File.WriteAllText(path, html);
         }
 
-        private const string Inner = @"<li><a href=""{0}"">{1}</a></li>";
+        private const string Inner = @"<li><a href=""{0}/"">{1}</a></li>";
     }
 }
