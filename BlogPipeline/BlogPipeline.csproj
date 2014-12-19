@@ -71,6 +71,7 @@
     <Compile Include="Markdown.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publish\CopyAssetsFolder.cs" />
     <Compile Include="Publish\CreateHomePage.cs" />
     <Compile Include="Publish\CreateNavigationPartial.cs" />
     <Compile Include="Publish\CreatePostPage.cs" />
@@ -78,7 +79,7 @@
     <Compile Include="Publish\EnsureNavigationPage.cs" />
     <Compile Include="Publish\EnsurePublishedFolder.cs" />
     <Compile Include="Publish\Post.cs" />
-    <Compile Include="Publish\ProcessFolders.cs" />
+    <Compile Include="Publish\ProcessPosts.cs" />
     <Compile Include="Publish\PublishPipeline.cs" />
     <Compile Include="Publish\SetupContext.cs" />
   </ItemGroup>

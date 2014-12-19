@@ -646,7 +646,7 @@ namespace BlogPipeline
                 //qualify the URL with the prefix so it can be complete from feeds
                 if (!url.StartsWith("http"))
                     url = relativePathUrlPrefix + url;
-                res = string.Format("<img src=\"{0}\" alt=\"{1}\"", url, altText);
+                res = string.Format("<img class=\"img-responsive\" src=\"{0}\" alt=\"{1}\"", url, altText);
 
                 if (titles[linkID] != null)
                 {
@@ -683,7 +683,7 @@ namespace BlogPipeline
             //qualify the URL with the prefix so it can be complete from feeds
             if (!url.StartsWith("http"))
                 url = relativePathUrlPrefix + url;
-            res = string.Format("<img src=\"{0}\" alt=\"{1}\"", url, altText);
+            res = string.Format("<img class=\"img-responsive\" src=\"{0}\" alt=\"{1}\"", url, altText);
 
             title = title.Replace("*", escapeTable["*"].ToString()).Replace("_", escapeTable["_"].ToString());
             res += string.Format(" title=\"{0}\"", title);

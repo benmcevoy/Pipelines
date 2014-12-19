@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Pipes;
 
@@ -12,19 +13,10 @@ namespace BlogPipeline.Publish
             var posts = new List<PostToProcess>(32);
             var paths = GetFilesToProcess("out");
 
-            foreach (var fileToProcess in paths)
-            {
-                var currentPost = CreatePost(fileToProcess);
-
-                posts.Add(currentPost);
-
-                context["currentpath"] = fileToProcess;
-                context["currentpost"] = currentPost;
-            }
+            posts.AddRange(paths.Select(CreatePost));
 
             context["posts"] = posts;
-            context["paths"] = paths;
-
+            
             return context;
         }
 
@@ -35,12 +27,12 @@ namespace BlogPipeline.Publish
 
         private static PostToProcess CreatePost(string currentPath)
         {
-
             var meta = JsonConvert.DeserializeObject<Meta>(File.ReadAllText(currentPath + "\\meta.json"));
 
             var post = new PostToProcess
             {
-                BodyHtml = File.ReadAllText(currentPath + "\\" + meta.Slug + ".html"),
+                SourcePath = currentPath,
+                BodyHtml = new Markdown("").Render(File.ReadAllText(currentPath + "\\" + meta.Slug + ".md")),
                 Meta = meta,
                 RelativePath = string.Format("{0:yyyy}\\{0:MM}\\{1}\\", meta.Published, meta.Slug)
             };

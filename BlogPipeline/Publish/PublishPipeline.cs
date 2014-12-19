@@ -11,7 +11,7 @@ namespace BlogPipeline.Publish
             {
                 new SetupContext(), 
                 new CreateNavigationPartial(), 
-                new ProcessFolders(),  
+                new ProcessPosts(),  
                 new CreateHomePage(), 
                 new CreateRssFeed(), 
             });

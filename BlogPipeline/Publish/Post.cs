@@ -4,6 +4,8 @@ namespace BlogPipeline.Publish
 {
     class PostToProcess
     {
+        public string SourcePath { get; set; }
+
         public string RelativePath { get; set; }
 
         public Meta Meta { get; set; }
