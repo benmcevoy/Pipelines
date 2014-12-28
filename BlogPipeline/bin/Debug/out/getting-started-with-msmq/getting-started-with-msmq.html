@@ -130,10 +130,10 @@ There were a couple of problems with WORKGROUP mode.</p>
 
 <p>The first one I do not really understand (I guess I need to RTFM).  If you "Manage" your computer you can see a Message Queuing node has been added.  I created a queue directly there, copied the name (something like machinename\private$\testqueue) and used that.  All good.  Apparantly you can only use private queus in WORKGROUP mode and must reference them with a specific naming format.  I found a few forum posts alluding to this, but no definitive answer anywhere. I'm sure it's mentioned somewhere in MSDN... </p>
 
-<p><img src="http://benmcevoy.com.au/blog/get/msmq/manage_queue.JPG" alt="Alt text" title="manage queues manually" /></p>
+<p><img class="img-responsive" src="http://benmcevoy.com.au/blog/get/msmq/manage_queue.JPG" alt="Alt text" title="manage queues manually" /></p>
 
 <p>Secondly, although you can't see it here :) I was also enumerating the public queues on my machine, as a check that the queue was created.</p>
 
 <p>Calling MessageQueue.GetPublicQueues is not supported in WORKGROUP mdoe, which was a bit of red herring.  I love the <a href="http://msdn.microsoft.com/en-us/library/hd4s6c1z.aspx">MSDN documentation</a> which lists whether the method is available. Guess the answer is no?</p>
 
-<p><img src="http://benmcevoy.com.au/blog/get/msmq/queue_test.JPG" alt="Alt text" title="Finally everything runs! One app is spitting messages out, while listeners grab the messages off round robin style" /></p>
+<p><img class="img-responsive" src="http://benmcevoy.com.au/blog/get/msmq/queue_test.JPG" alt="Alt text" title="Finally everything runs! One app is spitting messages out, while listeners grab the messages off round robin style" /></p>

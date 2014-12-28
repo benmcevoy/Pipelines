@@ -4,7 +4,7 @@
 
 <p>First of all, this is what I am talking about.  Here is a graph showing constructor injection (you know, IoC, DI, etc.) <a href="https://bitbucket.org/benmcevoy/mp3grabber">in an application</a> I wrote a while back that downloads MP3 from RSS/ATOM feeds.</p>
 
-<p><a href="http://benmcevoy.co.nz/blog/get/media_injection_isom.png"><img src="http://benmcevoy.co.nz/blog/get/media_injection.JPG" alt="alt text" title="The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example" /></a></p>
+<p><a href="http://benmcevoy.co.nz/blog/get/media_injection_isom.png"><img class="img-responsive" src="http://benmcevoy.co.nz/blog/get/media_injection.JPG" alt="alt text" title="The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example" /></a></p>
 
 <p><em>The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example.</em></p>
 
@@ -12,12 +12,12 @@
 
 <p>We can also visualize class inheritance and interface implementations:</p>
 
-<p><a href="http://benmcevoy.co.nz/blog/get/media_inherit_isom.png"><img src="http://benmcevoy.co.nz/blog/get/media_inherit.jpg" alt="alt text" title="MainView is a WPF window by the look of it, and inherits a lot of stuff because of it" /></a></p>
+<p><a href="http://benmcevoy.co.nz/blog/get/media_inherit_isom.png"><img class="img-responsive" src="http://benmcevoy.co.nz/blog/get/media_inherit.jpg" alt="alt text" title="MainView is a WPF window by the look of it, and inherits a lot of stuff because of it" /></a></p>
 
 <p><em>MainView is a WPF window by the look of it, and inherits a lot of stuff because of it.</em></p>
 
 <p>Or assembly references:
-<img src="http://benmcevoy.co.nz/blog/get/media_assembly.JPG" alt="alt text" title="The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components" /></p>
+<img class="img-responsive" src="http://benmcevoy.co.nz/blog/get/media_assembly.JPG" alt="alt text" title="The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components" /></p>
 
 <p><em>The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components.</em></p>
 
@@ -57,4 +57,4 @@
 
 <p>For comparison, this is a small part of DotNetNuke6, constructor injection (that's System.Object in the center, btw...):</p>
 
-<p><a href="http://benmcevoy.co.nz/blog/get/dnn6_injection_isom.png"><img src="http://benmcevoy.com.au/blog/get/dnn6_injection.JPG" alt="alt text" title="The pain that is DNN" /></a></p>
+<p><a href="http://benmcevoy.co.nz/blog/get/dnn6_injection_isom.png"><img class="img-responsive" src="http://benmcevoy.com.au/blog/get/dnn6_injection.JPG" alt="alt text" title="The pain that is DNN" /></a></p>

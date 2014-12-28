@@ -1,4 +1,4 @@
-# Building a Windows Phone App Part 2 #
+﻿# Building a Windows Phone App Part 2 #
 
 ## Silverlight or HTML? ##
 
@@ -6,7 +6,7 @@ In this case I'm going native.  XML manipulation in Javascript is not too much f
 
 The model looks something like:
 
-![model](http://benmcevoy.com.au/blog/get/winmopho/weather-model.png)
+![model](assets/weather-model.png)
 
 A repository will return an instance of the model, checking the cache or pulling a fresh one.  I'm making it the repositories responsibility to work out where to get the data from, which sounds pretty reasonable to me.
 
@@ -85,4 +85,4 @@ As you can see, I've chucked in an application service to handle refreshing the 
 
 The current solution is looking something like:
 
-![Solution at this point](http://benmcevoy.com.au/blog/get/winmopho/weather-soloution1.png)
+![Solution at this point](assets/weather-soloution1.png)
