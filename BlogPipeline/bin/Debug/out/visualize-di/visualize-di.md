@@ -1,4 +1,4 @@
-[NDepend](http://www.ndepend.com/).  That’s the answer.
+﻿[NDepend](http://www.ndepend.com/).  That’s the answer.
 
 However, the question was, how can I visualize dependancies in a .NET assembly? And as it turns, quite easily indeed.
 
@@ -60,7 +60,7 @@ For comparison, this is a small part of DotNetNuke6, constructor injection (that
 [![alt text][4]](http://benmcevoy.co.nz/blog/get/dnn6_injection_isom.png)
 
 
-  [1]: http://benmcevoy.co.nz/blog/get/media_injection.JPG "The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example"
-  [2]: http://benmcevoy.co.nz/blog/get/media_inherit.jpg "MainView is a WPF window by the look of it, and inherits a lot of stuff because of it"
-  [3]: http://benmcevoy.co.nz/blog/get/media_assembly.JPG "The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components"
-  [4]: http://benmcevoy.com.au/blog/get/dnn6_injection.JPG "The pain that is DNN"
+  [1]: assets/media_injection.JPG "The Downloader model class expects Download and RSS Managers to be injected, among other things.  You can also see possible issues, such as a concrete reference to History, instead of IHistory, for example"
+  [2]: assets/media_inherit.jpg "MainView is a WPF window by the look of it, and inherits a lot of stuff because of it"
+  [3]: assets/media_assembly.JPG "The MediaGrabber assembly references the usual system assemblies, as well as Castle and the RSS and Download manager components"
+  [4]: assets/dnn6_injection.JPG "The pain that is DNN"
