@@ -1,5 +1,7 @@
 # Pipelines
 
+A most simple implementation of pipes and filters
+
 Pipes
 
 ```
@@ -7,19 +9,9 @@ Pipes
     {
         private readonly IEnumerable<IFilter> _filters;
 
-        protected Pipeline()
-        {
-            _filters = new List<IFilter>(32);
-        }
-
         protected Pipeline(IEnumerable<IFilter> filters)
         {
             _filters = filters;
-        }
-
-        public static Pipeline Create(IEnumerable<IFilter> filters)
-        {
-            return new Pipeline(filters);
         }
 
         public IDictionary<string, object> Run(IDictionary<string, object> context)
