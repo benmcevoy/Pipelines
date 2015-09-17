@@ -29,3 +29,5 @@ and Filters
         IDictionary<string, object> Run(IDictionary<string, object> context);
     }
 ```
+
+and a bunch of other code as i explore some options
