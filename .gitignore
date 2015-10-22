@@ -37,3 +37,8 @@ Icon
 .Trashes
 /Pipelines/obj/Debug
 /Pipes/obj/Debug
+/BlogPipeline/bin/Debug
+/BlogPipeline/obj/Debug
+*.suo
+/Pipes/bin/Debug
+/files

@@ -35,7 +35,8 @@ namespace BlogPipeline.Publish
             foreach (var file in files)
             {
                 var temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, false);
+
+                file.CopyTo(temppath, true);
             }
 
             // If copying subdirectories, copy them and their contents to new location. 
@@ -44,6 +45,7 @@ namespace BlogPipeline.Publish
             foreach (var subdir in dirs)
             {
                 var temppath = Path.Combine(destDirName, subdir.Name);
+
                 DirectoryCopy(subdir.FullName, temppath, copySubDirs);
             }
         }

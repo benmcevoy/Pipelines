@@ -39,7 +39,7 @@ namespace BlogPipeline.Publish
             {
                 inner.AppendFormat(
                     Inner, 
-                    string.Format("/{0:yyyy}/{0:MM}/{1}", post.Meta.Published, post.Meta.Slug), post.Meta.Title);
+                    string.Format("/blog/{0:yyyy}/{0:MM}/{1}", post.Meta.Published, post.Meta.Slug), post.Meta.Title);
             }
 
             return new Tuple<int, string>(postToProcesses.First().Meta.Published.Year, inner.ToString());
