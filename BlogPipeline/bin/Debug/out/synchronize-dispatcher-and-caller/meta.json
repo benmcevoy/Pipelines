@@ -1,1 +1,0 @@
-{"published":"2013-08-05T07:00:00","summary":"The calling thread will wait until the dispatched work has completed, or give up after some period. ","keywords":"{, }, work, completed, action(), wait","slug":"synchronize-dispatcher-and-caller","title":"Synchronize dispatcher and caller"}

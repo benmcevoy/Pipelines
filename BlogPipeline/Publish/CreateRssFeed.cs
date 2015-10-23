@@ -30,18 +30,22 @@ namespace BlogPipeline.Publish
 
         private void CreateFeed(IEnumerable<PostToProcess> entries)
         {
-            var feed = new SyndicationFeed("blog.benmcevoy.com.au", "blog.benmcevoy.com.au", new Uri("http://blog.benmcevoy.com.au/feed"), "FeedID", DateTime.Now);
+            var feed = new SyndicationFeed("Ben McEvoy", "Just stuff for fun", new Uri("http://benmcevoy.com.au/blog/feed"), "http://benmcevoy.com.au/blog/feed", DateTime.Now);
             var items = new List<SyndicationItem>();
 
             foreach (var post in entries)
             {
-                items.Add(new SyndicationItem(
+                var entry = new SyndicationItem(
                     post.Meta.Title,
                     post.BodyHtml,
-                    new Uri("http://blog.benmcevoy.com.au/" + post.RelativePath.Replace(@"\\", "/"), UriKind.Absolute),
+                    new Uri("http://benmcevoy.com.au/blog/" + post.RelativePath.Replace(@"\\", "/"), UriKind.Absolute),
                     post.RelativePath,
                     post.Meta.Published
-                    ));
+                    );
+
+                entry.PublishDate = post.Meta.Published;
+
+                items.Add(entry);
             }
 
             feed.Items = items;
